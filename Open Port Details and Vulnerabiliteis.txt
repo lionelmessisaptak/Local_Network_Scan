@@ -1,0 +1,94 @@
+Port	Protocol	State	Common Service		Description
+22	TCP		open		SSH		Used for secure shell access to the system. If exposed to the internet, it's often targeted by brute-force attacks.
+53	TCP		open		DNS (Domain)    Typically used for DNS queries. TCP is used when responses are large or for zone transfers. Often expected on DNS servers.
+80	TCP		open		HTTP	        Used for unencrypted web traffic. If this is a web server, it's serving content over HTTP.
+1900	TCP		open		UPNP	   	Universal Plug and Play. Typically uses UDP (not TCP), so TCP on 1900 is unusual and may indicate a misconfiguration or non-standard service.
+
+
+
+
+
+
+Port 22 – SSH
+
+Vulnerabilities:
+
+    Brute-force attacks
+
+    Weak/default credentials
+
+    Outdated versions (e.g., CVE-2018-15473)
+
+    Insecure key management
+
+Mitigations:
+
+    Use key-based auth
+
+    Disable root login
+
+    Limit access via firewall
+
+    Use fail2ban
+
+    Keep SSH updated
+
+Port 53 – DNS
+
+Vulnerabilities:
+
+    DNS cache poisoning
+
+    DNS amplification
+
+    Zone transfer leaks
+
+    RCE in DNS software (e.g., BIND)
+
+Mitigations:
+
+    Disable recursion externally
+
+    Restrict zone transfers
+
+    Use rate limiting
+
+    Keep DNS software updated
+
+Port 80 – HTTP
+
+Vulnerabilities:
+
+    Unencrypted traffic
+
+    XSS, SQL injection, RCE
+
+    Outdated web servers/CMS
+
+Mitigations:
+
+    Use HTTPS
+
+    Sanitize inputs
+
+    Patch web apps and servers
+
+    Use WAF
+
+Port 1900 – UPNP (Unusual on TCP)
+
+Vulnerabilities:
+
+    Exposes internal devices
+
+    Remote code execution
+
+    DDoS amplification (usually via UDP)
+
+Mitigations:
+
+    Disable UPnP if not needed
+
+    Block port externally
+
+    Monitor for unusual activity
